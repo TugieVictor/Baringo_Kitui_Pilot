@@ -1,0 +1,14 @@
+name: Temasek_Pilot_Baringo_Sites_Dashboard
+title: Temasek_Pilot_Baringo_Sites_Dashboard
+username:
+account: temasek
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6503597
+bundleId: 6016182
+url: https://temasek.shinyapps.io/Temasek_Pilot_Baringo_Sites_Dashboard/
+when: 1655443718.51709
+lastSyncTime: 1655443718.51709
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: script.Rmd

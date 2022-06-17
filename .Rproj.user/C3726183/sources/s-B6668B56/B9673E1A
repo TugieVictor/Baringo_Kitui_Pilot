@@ -1,0 +1,27 @@
+{
+    "id": "B9673E1A",
+    "path": "D:/ICRAF/Systems_Theme/Temasek/Delivarables/Shiny_Dashboard/server.R",
+    "project_path": "server.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1654501060201.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "326,4",
+        "scrollLine": "312"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1655443419,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1655443419367,
+    "read_only": false,
+    "read_only_alternatives": []
+}

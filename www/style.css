@@ -1,0 +1,29 @@
+.sidebar {
+    color: #FFF;
+    position: fixed;
+    width: 220px;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;    
+  right:0;    
+  left:0;        
+  background-color:#3c8dbc;    
+  z-index: 1000;    
+  opacity: 0.9;
+}
+
+
+.sticky_footer {    
+  position:fixed;   
+  bottom:0;    
+  right:0;    
+  left:0;    
+  background:#3c8dbc;    
+  z-index: 1000;    
+  opacity: 0.9; 
+  
+}

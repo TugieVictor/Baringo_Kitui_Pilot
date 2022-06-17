@@ -1,0 +1,14 @@
+name: Temasek_Pilot_Baringo_Sites_Dashboard
+title: Temasek_Pilot_Baringo_Sites_Dashboard
+username:
+account: tugievictor
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6444000
+bundleId: 6002726
+url: https://tugievictor.shinyapps.io/Temasek_Pilot_Baringo_Sites_Dashboard/
+when: 1655124553.51579
+lastSyncTime: 1655124553.51579
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: script.Rmd|www/Baringo_Map.pdf|www/Baringo_map.png|www/Screenshot 2022-06-06 084649.png
