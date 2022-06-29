@@ -1,9 +1,8 @@
-Subcounty,Wards,Location,Sublocation,Land_size_Sq.km,Population_KNBS_2019,Population_Density_KNBS_2019,No.of_Households_KNBS_2019,Households_Density,Target_Temasek_Households
-,,,,,,,,,
+Subcounty,Wards,Location,Sublocation,"Land size (Sq.km) (KNBS, 2019)","Population (KNBS, 2019)","Population density (KNBS, 2019)","No.of Households (KNBS, 2019)",Households density,Targeted Households
 Baringo South,Marigat, Kimalel,Kimalel ,44.2,2103,48,541,12.2,221
 Baringo South,Marigat, Kimalel,Koriema,43,3219,75,866,20.1,433
 Baringo South,Marigat, Kimalel,Sabor,78.7,1743,22,465,5.9,233
-Baringo South,Marigat,Kimondis,Kibingor,25.7,911,35,231,9.0,116
+Baringo South,Marigat,Kimondis,Kibingor,25.7,911,35,231,9,116
 Baringo South,Marigat,Kimondis,Katemwa,21.4,868,41,231,10.8,116
 Baringo South,Marigat,Marigat ,Endao,39.7,1496,38,338,8.5,200
 Baringo South,Marigat,Marigat ,Perkerra,15.8,8284,525,2299,145.5,1100
@@ -13,7 +12,7 @@ Baringo South,Mochongoi,Loboi,Chelaba,40.3,1413,35,254,6.3,254
 Baringo South,Mochongoi,Loboi,Maji Ndege,12.6,1582,126,418,33.2,418
 Baringo South,Mochongoi,Sandai,Mbechot,39.5,1881,48,338,8.6,338
 Baringo South,Mochongoi,Total,Total,92.4,4876,209,1010,10.9,1010
-Mogotio,Mogotio,Lembus-Kiptoim,Kiptoim,13,1393,107,247,19.0,124
+Mogotio,Mogotio,Lembus-Kiptoim,Kiptoim,13,1393,107,247,19,124
 Mogotio,Mogotio,Lembus-Kiptoim,Ndanai,12.2,1337,110,249,20.4,125
 Mogotio,Mogotio,Lembus-Kiptoim,Olbat,9.9,1193,121,205,20.7,103
 Mogotio,Mogotio,Lembus-Kiptoim,Sagasagik,12.7,1216,95,233,18.3,127
@@ -23,7 +22,7 @@ Mogotio,Mogotio,Lembus-Mogotio,Mogotio,17.1,9128,535,2586,151.2,1418
 Mogotio,Mogotio,Total,Total,146.6,22553,1177,5194,35.4,2742
 Mogotio,Emining Ward,Cheberen,Cheberen,60.8,4018,66,826,13.6,417
 Mogotio,Emining Ward,Emining,Emining ,45.5,5572,122,1116,24.5,385
-Mogotio,Emining Ward,Emining,Kabogor,23.3,1903,82,350,15.0,180
+Mogotio,Emining Ward,Emining,Kabogor,23.3,1903,82,350,15,180
 Mogotio,Emining Ward,Emining,Oterit,21.7,2157,100,421,19.4,300
 Mogotio,Emining Ward,Koibos Soi,Radad,86.5,2848,33,564,6.5,383
 Mogotio,Emining Ward,Rosoga,Rosoga,34.2,3860,113,724,21.2,364
@@ -45,6 +44,6 @@ Baringo North,Kabartonjo,Ossen,Tiriondonin,21.9,4109,187,966,44.1,599
 Baringo North,Kabartonjo,Saimo,Kapchepkor,9.9,2730,277,576,58.2,357
 Baringo North,Kabartonjo,Saimo,Kapkombe,4.4,1027,233,241,54.8,149
 Baringo North,Kabartonjo,Saimo,Kaptere,6.5,2529,390,610,93.8,378
-Baringo North,Kabartonjo,Saimo,Kasisit,7,2292,328,504,72.0,329
+Baringo North,Kabartonjo,Saimo,Kasisit,7,2292,328,504,72,329
 Baringo North,Kabartonjo,Saimo,Tirimionin,8.1,2324,287,534,65.9,351
 Baringo North,Kabartonjo,Total,Total,162.4,29678,2971,6746,41.5,4187

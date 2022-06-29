@@ -13,23 +13,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r load data}
-my_data <- data.table(read_csv("data/Subcounty.csv"))
+my_data <- data.table(read_csv("data/Kitui_subcounties.csv"))
 
 ```
 
 
-```{r data cleaning}
-colnames(my_data)[2] <- "Wards"
-
-colnames(my_data)[7] <- "Targeted households"
-
-# my_data.long$Site_Data[my_data.long$Site_Data =="Population (KNBS, 2019)"] <- "Population"
-# 
-# my_data.long$Site_Data[my_data.long$Site_Data =="Number of households (KNBS, 2019)"] <- "Number of households"
-
-my_data <- my_data %>% 
-  mutate_if(is.character, as.factor)
-```
 
 
 ```{r Long format data frame}
@@ -47,7 +35,7 @@ View(my_data.long)
 
 
 ```{r Write csv}
-fwrite(my_data.long, "data/Subcounty.csv")
+fwrite(my_data.long, "data/Kitui_subcounties.csv")
 ```
 
 

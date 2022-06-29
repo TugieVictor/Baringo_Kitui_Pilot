@@ -2,8 +2,21 @@
     color: #FFF;
     position: fixed;
     width: 220px;
+    background:#831407;
     white-space: nowrap;
     overflow: visible;
+}
+
+.sticky_footer {    
+  position:fixed;   
+  bottom:0;    
+  right:0;    
+  left:0;  
+  background:#151313;
+  color:#831407;
+  z-index: 1000;    
+  opacity: 0.9; 
+  
 }
 
 footer {
@@ -17,13 +30,3 @@ footer {
 }
 
 
-.sticky_footer {    
-  position:fixed;   
-  bottom:0;    
-  right:0;    
-  left:0;    
-  background:#3c8dbc;    
-  z-index: 1000;    
-  opacity: 0.9; 
-  
-}
