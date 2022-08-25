@@ -2,7 +2,7 @@
     color: #FFF;
     position: fixed;
     width: 220px;
-    background:#831407;
+    background:#014681;
     white-space: nowrap;
     overflow: visible;
 }
@@ -30,3 +30,36 @@ footer {
 }
 
 
+.main-header.logo {
+           font-family: "Times New Roman", Times, "Times New Roman", serif;
+           font-weight: bold;
+          font-size: 20px;
+          }
+        /* active selected tab in the sidebarmenu */
+        .skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+                              background-color: #327A00;
+                               border: 4px solid #909497;
+                               border-radius: 25px;
+                              }
+                              
+          /* active selected tab in the sidebarmenu */
+        .skin-blue .main-sidebar .sidebar .sidebar-menu a{
+                              background-color: #831407;
+                               border: 4px solid #909497;
+                               border-radius: 25px;
+                              }
+                              
+        /* main sidebar when hovered*/
+        .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+                              background-color: #14CA02;
+                               border: 4px solid #909497;
+                               border-radius: 25px;
+                              }
+                              
+        
+        /* toggle button when hovered  */ 
+        .skin-blue .main-header .navbar .sidebar-toggle:hover{
+                              background-color: #327A00;
+                              }
+                
+        * { font-family: "Times New Roman"; }

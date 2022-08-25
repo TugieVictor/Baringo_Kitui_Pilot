@@ -1,0 +1,49 @@
+Subcounty,Wards,Location,Sublocation,"Land size (Sq.km) (KNBS, 2019)","Population (KNBS, 2019)","Population density (KNBS, 2019)","No.of Households (KNBS, 2019)",Households density,Targeted Households
+Baringo South,Marigat, Kimalel,Kimalel ,44.2,2103,48,541,12.2,221
+Baringo South,Marigat, Kimalel,Koriema,43,3219,75,866,20.1,433
+Baringo South,Marigat, Kimalel,Sabor,78.7,1743,22,465,5.9,233
+Baringo South,Marigat,Kimondis,Kibingor,25.7,911,35,231,9,116
+Baringo South,Marigat,Kimondis,Katemwa,21.4,868,41,231,10.8,116
+Baringo South,Marigat,Marigat ,Endao,39.7,1496,38,338,8.5,200
+Baringo South,Marigat,Marigat ,Perkerra,15.8,8284,525,2299,145.5,1100
+Baringo South,Marigat,Marigat ,Yatoi,67.1,9702,145,2943,43.9,1550
+Baringo South,Marigat,Total,Total,335.6,28326,929,7914,23.6,3969
+Baringo South,Mochongoi,Loboi,Chelaba,40.3,1413,35,254,6.3,254
+Baringo South,Mochongoi,Loboi,Maji Ndege,12.6,1582,126,418,33.2,418
+Baringo South,Mochongoi,Sandai,Mbechot,39.5,1881,48,338,8.6,338
+Baringo South,Mochongoi,Total,Total,92.4,4876,209,1010,10.9,1010
+Mogotio,Mogotio,Lembus-Kiptoim,Kiptoim,13,1393,107,247,19,124
+Mogotio,Mogotio,Lembus-Kiptoim,Ndanai,12.2,1337,110,249,20.4,125
+Mogotio,Mogotio,Lembus-Kiptoim,Olbat,9.9,1193,121,205,20.7,103
+Mogotio,Mogotio,Lembus-Kiptoim,Sagasagik,12.7,1216,95,233,18.3,127
+Mogotio,Mogotio,Lembus-Mogotio,Chemogoch,26.1,2943,113,641,24.6,324
+Mogotio,Mogotio,Lembus-Mogotio,Kipsogon,55.6,5343,96,1033,18.6,521
+Mogotio,Mogotio,Lembus-Mogotio,Mogotio,17.1,9128,535,2586,151.2,1418
+Mogotio,Mogotio,Total,Total,146.6,22553,1177,5194,35.4,2742
+Mogotio,Emining Ward,Cheberen,Cheberen,60.8,4018,66,826,13.6,417
+Mogotio,Emining Ward,Emining,Emining ,45.5,5572,122,1116,24.5,385
+Mogotio,Emining Ward,Emining,Kabogor,23.3,1903,82,350,15,180
+Mogotio,Emining Ward,Emining,Oterit,21.7,2157,100,421,19.4,300
+Mogotio,Emining Ward,Koibos Soi,Radad,86.5,2848,33,564,6.5,383
+Mogotio,Emining Ward,Rosoga,Rosoga,34.2,3860,113,724,21.2,364
+Mogotio,Emining Ward,Total,Total,272,20358,516,4001,14.7,2029
+Baringo North,Kipsaraman,Kapteberewo,Bortolimo,9.6,3879,405,894,93.1,536
+Baringo North,Kipsaraman,Kapteberewo,Issas,7.2,1982,276,433,60.1,260
+Baringo North,Kipsaraman,Kipkata,Kapkoiwo,14.4,1892,131,426,29.6,256
+Baringo North,Kipsaraman,Kipkata,Tunochun,7.6,2658,350,571,75.1,343
+Baringo North,Kipsaraman,Total,Total,38.8,10411,1162,2324,59.9,1395
+Baringo North,Kabartonjo,Katiorin,Lelian,11.2,1014,90,216,19.3,130
+Baringo North,Kabartonjo,Katiorin,Kapkirwok,19.4,921,47,226,11.6,136
+Baringo North,Kabartonjo,Kelyo,Kapkiamo,14.9,1979,133,446,29.9,268
+Baringo North,Kabartonjo,Kelyo,Kasaka,14.6,1251,86,260,17.8,156
+Baringo North,Kabartonjo,Kelyo,Kelyo Mosop,6.9,2722,393,727,105.4,436
+Baringo North,Kabartonjo,Ossen,Kaimogul,13.8,2245,163,476,34.5,300
+Baringo North,Kabartonjo,Ossen,Kaptum,13.4,3702,277,795,59.3,493
+Baringo North,Kabartonjo,Ossen,Tiloi,10.4,833,80,169,16.3,105
+Baringo North,Kabartonjo,Ossen,Tiriondonin,21.9,4109,187,966,44.1,599
+Baringo North,Kabartonjo,Saimo,Kapchepkor,9.9,2730,277,576,58.2,357
+Baringo North,Kabartonjo,Saimo,Kapkombe,4.4,1027,233,241,54.8,149
+Baringo North,Kabartonjo,Saimo,Kaptere,6.5,2529,390,610,93.8,378
+Baringo North,Kabartonjo,Saimo,Kasisit,7,2292,328,504,72,329
+Baringo North,Kabartonjo,Saimo,Tirimionin,8.1,2324,287,534,65.9,351
+Baringo North,Kabartonjo,Total,Total,162.4,29678,2971,6746,41.5,4187

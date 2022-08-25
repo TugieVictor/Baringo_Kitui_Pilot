@@ -1,6 +1,6 @@
 pacman::p_load(shiny, shinydashboard, DT, dplyr, plotly, ggplot2, shiny, ggplot2, 
                tidyverse, data.table, plotly, ggrepel, shinydashboard, shinyWidgets, 
-               shinythemes, ggtext, ggcorrplot, shinycssloaders, scales, shinydashboardPlus)
+               shinythemes, ggtext, ggcorrplot, shinycssloaders, scales, shinydashboardPlus, gotop)
 
 
 
@@ -21,6 +21,17 @@ people_data <- c("Population (KNBS, 2019)", "No.of Households (KNBS, 2019)", "Ta
 
 Kitui_Data <- data.table(read_csv("data/Kitui_Sites.csv"))
 
-Kitui_County <- read.csv("data/Kitui.csv")
+Kitui_County <- read.csv("data/Kitui_long.csv")
 
 K_Subcounty <- data.table(read_csv("data/Kitui_subcounties.csv"))
+
+Kitui_Subcounties <- c("Kitui Rural", 
+                       "Kitui West", 
+                       "Kitui East", 
+                       "Kitui Central", 
+                       "Kitui South",
+                       "Mwingi North",
+                       "Mwingi West",
+                       "Mwingi East")
+
+

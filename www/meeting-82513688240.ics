@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+PRODID:-//zoom.us//iCalendar Event//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+CLASS:PUBLIC
+BEGIN:VTIMEZONE
+TZID:Africa/Nairobi
+LAST-MODIFIED:20220317T223602Z
+TZURL:http://tzurl.org/zoneinfo-outlook/Africa/Nairobi
+X-LIC-LOCATION:Africa/Nairobi
+BEGIN:STANDARD
+TZNAME:EAT
+TZOFFSETFROM:+0300
+TZOFFSETTO:+0300
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20220704T125831Z
+DTSTART;TZID=Africa/Nairobi:20220704T160000
+DTEND;TZID=Africa/Nairobi:20220704T170000
+SUMMARY:LCOY 2022 Weekly Catch-up Meeting
+RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20220926T140000;INTERVAL=1;BYDAY=MO
+UID:ZOOM82513688240
+TZID:Africa/Nairobi
+DESCRIPTION:Amayo Passy is inviting you to a scheduled Zoom meeting.\n\nJ
+ oin Zoom Meeting\nhttps://us02web.zoom.us/j/82513688240?pwd=0WrcHvlcy_Ca
+ w0w51o8pVYuaJ7sk35.1\n\nMeeting ID: 825 1368 8240\nPasscode: 2901747\nOn
+ e tap mobile\n+12532158782\,\,82513688240#\,\,\,\,*2901747# US (Tacoma)\
+ n+13017158592\,\,82513688240#\,\,\,\,*2901747# US (Washington DC)\n\nDia
+ l by your location\n        +1 253 215 8782 US (Tacoma)\n        +1 301 
+ 715 8592 US (Washington DC)\n        +1 312 626 6799 US (Chicago)\n     
+    +1 346 248 7799 US (Houston)\n        +1 646 931 3860 US\n        +1 
+ 669 444 9171 US\n        +1 669 900 6833 US (San Jose)\n        +1 929 2
+ 05 6099 US (New York)\nMeeting ID: 825 1368 8240\nPasscode: 2901747\nFin
+ d your local number: https://us02web.zoom.us/u/kcsvh0otP0\n\n
+LOCATION:https://us02web.zoom.us/j/82513688240?pwd=0WrcHvlcy_Caw0w51o8pVY
+ uaJ7sk35.1
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR

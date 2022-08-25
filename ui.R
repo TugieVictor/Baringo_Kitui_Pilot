@@ -1,8 +1,9 @@
 
 ui <- dashboardPage(
-  dashboardHeader(title="Restoring Trees and Livelihoods Pilot: Baringo & Kitui", titleWidth = 650,
+  dashboardHeader(title="Restoring Trees and Livelihoods Pilot Sites: Baringo & Kitui", titleWidth = 650,
                   tags$li(class="dropdown",tags$a(href="https://www.worldagroforestry.org/", 
-                                                  icon("fas fa-caret-up"), "Center for International Forestry Research(CIFOR) - International Centre for Research in Agroforestry(ICRAF) Website", 
+                                                  icon("fas fa-caret-up"), "Go to: World Agroforestry",
+                                                  # "Center for International Forestry Research(CIFOR) - International Centre for Research in Agroforestry(ICRAF) Website", 
                                                   target="_blank"))  
   ),
   
@@ -12,16 +13,13 @@ ui <- dashboardPage(
                 
                 style = "position: fixed;overflow: visible; color: #FFF; width: 220px; white-space: nowrap;",
                 
-                menuItem(
-                  "Instructions & Introduction", 
-                  tabName = "Intro",
-                  icon = icon("info")
-                ),
                 
-                
+                h4(HTML("<u>Contents</u>")),
+                h5(HTML("<strong>TAB 1</strong>")),
                 menuItem(
-                  "Pilot Dashboard", 
-                  tabName = "viz", 
+                  "General statistics for sites", 
+                  tabName = "viz",
+                  # icon = icon("info")
                   icon=icon("chart-line")
                 ),
                 
@@ -29,7 +27,7 @@ ui <- dashboardPage(
                                  h4("Baringo Sites"),
                                  selectInput("Sub_county",
                                              "Select Sub-county",
-                                             unique(B_Subcounty$Subcounty),
+                                             unique(Baringo_County$Subcounty),
                                              selected = "Baringo North")
                 ),
                 
@@ -57,8 +55,25 @@ ui <- dashboardPage(
                                              "Select Chart Type",
                                              choices = c("Line chart",
                                                          "Bar chart"),
-                                             selected = "Line chart")
+                                             selected = "Bar chart")
                 ),
+                
+                h5(HTML("<strong>TAB 2</strong>")),
+                menuItem(
+                  "Background info on sites",
+                  tabName = "Intro",
+                  # icon = icon("info")
+                  icon=icon("chart-line")
+                ),
+                
+                h5(HTML("<strong>TAB 3</strong>")),
+                menuItem(
+                  HTML("Socio-economics baseline         <br>     statistics</br>"),
+                  tabName = "socio_econ",
+                  # icon = icon("info")
+                  icon=icon("chart-line")
+                ),
+                
                 
                 div(class = "sticky_footer", sidebarUserPanel("Developers:",
                                                               subtitle = "Victor Mutugi, Dr. Brian Chiputwa"
@@ -71,15 +86,43 @@ ui <- dashboardPage(
     tags$script(
       HTML("$('body').addClass('fixed');")
     ),
+
     
-    tags$head(tags$style(HTML('
-                              .main-header .logo {
-                              font-family: "Georgia", Times, "Times New Roman", serif;
-                              font-weight: bold;
-                              font-size: 20px;
-                              }
-                              ')),
-              tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
+    fluidRow(
+              tags$style(".nav-tabs {
+                background-color: #17202A;
+              }
+              
+              .nav-tabs-custom .nav-tabs li.active:hover a, .nav-tabs-custom .nav-tabs li.active a {
+              background-color: #327A00;
+              border-top-color: #17202A;
+              border: 5px solid;    
+              border-right-color: #FF3E00;
+              color: white;
+              }
+              
+              .nav-tabs-custom .nav-tabs li.active {
+                  border-top-color: #FF3E00;
+              }
+              
+              .nav-tabs-custom .nav-tabs li a{
+                  color: #FFFFFF;
+              }")
+     ),
+    
+    tags$head(
+                # tags$style(HTML('
+                #               .main-header .logo {
+                #               font-family: "Georgia", Times, "Times New Roman", serif;
+                #               font-weight: bold;
+                #               font-size: 20px;
+                #               }
+                #               ')),
+              tags$link(
+                rel = "stylesheet", 
+                type = "text/css",
+                href = "style.css"
+              )
     ),
     
     
@@ -87,8 +130,10 @@ ui <- dashboardPage(
       tabItems(
         ## First tab item
         tabItem(tabName = "Intro", 
-                tabBox(id="t1", width = 12, 
+                tabBox(id="t1", width = 12,
                        tabPanel("About Baringo", icon=icon("address-card"),
+                                
+                                tags$br(),
                                 
                                 fluidRow(
                                   column(width = 6, style = "background-color: #FF3E00; color: white",
@@ -110,7 +155,6 @@ ui <- dashboardPage(
                                          h4(tags$p("•	Baringo North : (Kipsaraman ward and Kabartonjo ward)")),
                                          h4(tags$p("•	Baringo South : (Marigat ward and Mochongoi ward), and ")),
                                          h4(tags$p("•	Mogotio : (Mogotio ward and Emining ward)")),
-                                         tags$br(),
                                          tags$br()
                                   )
                                 ),
@@ -118,9 +162,9 @@ ui <- dashboardPage(
                                 tags$br(), 
                                 
                                 fluidRow(
-                                  box(width = 12,
+                                  box(id = "Baringo_maps", width = 12,
                                       column(width = 12, align = "center", style = "background-color: #17202A; color: white; border: 4px solid #909497; border-radius: 25px",
-                                             h2("Baringo County Maps"))
+                                             h2(HTML("<a href='#Baringo_maps'>Baringo County Maps</a> ")))
                                   )
                                 ),
                                 
@@ -132,21 +176,88 @@ ui <- dashboardPage(
                                          tags$a("Map of Baringo county selected wards"), 
                                          align = "center"
                                   ),
-                                  column(width = 6, style = 'border-left: 1px solid',
+                                  column(width = 6,  style = 'border-left: 5px solid',
+                                         tags$img(
+                                           src = "baringo_zones.png",
+                                           width = "100%",
+                                           height = 550
+                                         ),
+                                         tags$br(),
+                                         tags$a(
+                                           "Delineated bio-climatic zones in Baringo county"
+                                         ),
+                                         align = "center"
+                                  ),
+                                ), 
+                                
+                                
+                                fluidRow(
+                                  box(width = 12)
+                                ),
+
+                                fluidRow(
+                                  column(width = 6,
                                          tags$img(src="Baringo_NDVI_plot2.png", width = "100%" , 
                                                   height = 550),
                                          tags$br(), 
-                                         tags$a("Vegetation map of Baringo county selected wards"), 
+                                         tags$a("Vegetation map of selected wards in Baringo county"), 
+                                         align = "center"
+                                  ),
+                                  
+                                  column(width = 6,  style = 'border-left: 5px solid',
+                                    tags$img(
+                                      src = "Baringo_South_GoogleMap.png",
+                                      width = "100%",
+                                      height = 550
+                                  ),
+                                  
+                                    tags$br(),
+                                    tags$a (
+                                      "Delineated wards of Baringo South matched to google maps showing the randomly selected locations (rectangle)"
+                                    ),
+                                    align = "center"
+                                    )
+                                ),
+                                
+                                fluidRow(
+                                  box(width = 12)
+                                ),
+                                
+                                fluidRow(
+                                  column(width = 6,
+                                         tags$img(
+                                           src="Mogotio_GoogleMap.png", 
+                                           width = "100%" , 
+                                           height = 550
+                                         ),
+                                         tags$br(), 
+                                         tags$a(
+                                           "Delineated wards of Mogotio matched to google maps showing the randomly selected locations (rectangle)"
+                                         ), 
+                                         align = "center"
+                                  ),
+                                  
+                                  column(width = 6,  style = 'border-left: 5px solid',
+                                         tags$img(
+                                           src = "Baringo_North_GoogleMap.png",
+                                           width = "100%",
+                                           height = 550
+                                         ),
+                                         
+                                         tags$br(),
+                                         tags$a (
+                                           "Delineated wards of Baringo North matched to google maps showing the randomly selected locations (rectangle)"
+                                         ),
                                          align = "center"
                                   )
-                                ), 
+                                ),
                                 
                                 tags$br(), 
                                 
                                 fluidRow(
-                                  box(width = 12,
+                                  box(id = "Baringo_conservancies", width = 12,
                                       column(width = 12, align = "center", style = "background-color: #17202A; color: white; border: 4px solid #909497; border-radius: 25px",
-                                             h2("Baringo County Conservancies"))
+                                             h2(HTML("<a href='#Baringo_conservancies'>Baringo County Conservancies</a> ")))
                                   )
                                 ),
                                 
@@ -240,8 +351,15 @@ ui <- dashboardPage(
                                 
                        ),
                        
+                       tags$br(),
+                       tags$br(),
+                       
                        #Kitui County
-                       tabPanel( title = "About Kitui", icon = icon("address-card"),
+                       tabPanel(title = "About Kitui", icon = icon("address-card"), id = "About_Kitui",
+                                
+                                tags$br(),
+                                
+                              
                                  fluidRow(
                                    column(width = 6, style = "background-color: #FF3E00; color: white",
                                           h2(HTML("<strong>Overview</strong>")),
@@ -261,11 +379,95 @@ ui <- dashboardPage(
                                           h4(tags$p("Eight wards in two subcounties in Kitui have been selected for the Project. These are:")),
                                           h4(tags$p("•	Kitui Rural : (Yatta - Kwa Vonza ward, Kanyangi ward, Mbitini ward and Kisasi ward)")),
                                           h4(tags$p("•	Kitui West : (Mutonguni ward, Kauwi ward, Matinyani ward and Kwa mutonga ward), and ")),
-                                          tags$br(),
                                           tags$br()
                                    )
-                                 )
+                                 ),
+                                 
+                                tags$br(), 
+                                
+                        #         tags$head(tags$script(HTML('
+                        # var fakeClick = function(tabName, anchorName) {
+                        #   var dropdownList = document.getElementsByTagName("a");
+                        #   for (var i = 0; i < dropdownList.length; i++) {
+                        #     var link = dropdownList[i];
+                        #     if(link.getAttribute("data-value") == tabName) {
+                        #       link.click();
+                        #       document.getElementById(anchorName).scrollIntoView({
+                        #         behavior: "smooth"
+                        #         });
+                        #     };
+                        #   }
+                        # };
+                        #                          '))),
+                        #         fluidPage(
+                        #           span("",
+                        #                onclick = "fakeClick('About Kitui', 'Kitui_maps')"))
+                                
+                                fluidRow(
+                                  box(id = "Kitui_maps", width = 12,
+                                      column(width = 12, align = "center", style = "background-color: #17202A; color: white; border: 4px solid #909497; border-radius: 25px",
+                                             h2(HTML("Kitui County Maps"))
+                                             # h2(HTML("<a href='#Kitui_maps'>Kitui County Maps</a> ")),
+                                             # tags$a(href='https://restoration-project.shinyapps.io/Restoring_Trees_and_Livelihoods_in_Kenya_pilot_Baringo_Kitui/#Kitui_maps'))
+                                      )
+                                  ),
+                                  
+                                  # tags$a("Some Title", 
+                                  #        onclick="customHref('some-destination')",  
+                                  #        tags$img(src = "Kitui_Rural_GoogleMap.png", alt= "my cool image")
+                                  # ),
+                                  
+                                  fluidRow(
+                                    column(width = 6,
+                                           tags$img(src="Kitui_Rural_GoogleMap.png", width = "100%" , 
+                                                    height = 550),
+                                           tags$br(), 
+                                           tags$a("Delineated wards of Kitui Rural matched to google maps"), 
+                                           align = "center"
+                                    ),
+                                    column(width = 6, 
+                                           style = "border-left: 5px solid;",
+                                           tags$img(
+                                             src="Kitui_West_GoogleMap.png", 
+                                             width = "100%" , 
+                                             height = 550),
+                                           tags$br(), 
+                                           tags$a(
+                                             "Delineated wards of Kitui West matched to google maps"
+                                           ), 
+                                           align = "center"
+                                    )
+                                  ),
+                                  
+                                  
+                                  # fluidRow(
+                                  #   box(width = 12)
+                                  # ),
+                                  
+                                  fluidRow(
+                                    column(width = 6,
+                                           tags$img(src="kitui_zones.png", width = "100%" , 
+                                                    height = 550), 
+                                           tags$br(), 
+                                           tags$a("Delineated wards in Kitui Rural and Kitui West"), 
+                                           align = "center"
+                                    )
+                                  ),
+                                  
+                                  tags$br(),
+                                  
+                                  # fluidRow(
+                                  #   box(width = 12)
+                                  # )
+                                
+                                ),
+                       
+                                
+                                
                        ),
+                       
+                       tags$br(),
+                       tags$br(),
                        
                        tabPanel(title = "Data", icon = icon("table"),
                                 fluidRow(
@@ -284,7 +486,11 @@ ui <- dashboardPage(
                                   )
                                 )
                        ) 
-                )
+                ),
+                
+                
+                tags$br(),
+                tags$br(),
                 
         ),
         
@@ -338,7 +544,7 @@ ui <- dashboardPage(
                                                )
                                         ),
                                         column(width = 6,
-                                               tags$p(h4("Kipsaraman Ward:"), 
+                                               tags$p(h4("Saimo-Kipsaraman Ward:"), 
                                                       tags$br(), "1. 60%HH to benefit from the project. Highly populated. Small land sizes, potential for tree growing. Most lands have potential for tree growing"
                                                )
                                         )
@@ -388,11 +594,34 @@ ui <- dashboardPage(
                                   )
                                 ),
                                 
-                                withSpinner(plotlyOutput("land1", height = "650px")),
+                                fluidRow(
+                                 column(width = 6,
+                                        withSpinner(plotlyOutput("land1", height = "650px"))
+                                   ),
+                                 
+                                 column(width = 6,
+                                        withSpinner(plotlyOutput("popdens1", height = "650px"))
+                                 )
+                                 ),
                                 
-                                withSpinner(plotlyOutput("popdens1", height = "650px")),
+                                tags$br(),
+                                tags$br(),
                                 
-                                withSpinner(plotlyOutput("hhdens1", height = "650px")),
+                                fluidRow(
+                                  column(width = 3),
+                                  
+                                  column(width = 6,
+                                         withSpinner(plotlyOutput("hhdens1", height = "650px"))
+                                  ),
+                                  
+                                  column(width = 3)
+                                ),
+                                
+                                tags$br(),
+                                tags$br(),
+                                
+                                
+                                
                                 
                        ),
                        
@@ -411,7 +640,7 @@ ui <- dashboardPage(
                                          withSpinner(plotlyOutput("pop", height = "650px"))
                                   ),
                                   column(width = 4,
-                                         withSpinner(plotlyOutput("land", height = "650px")),
+                                         withSpinner(plotlyOutput("land", height = "650px"))
                                   ),
                                   column(width = 4,
                                          withSpinner(plotlyOutput("avghld", height = "650px"))
@@ -429,7 +658,9 @@ ui <- dashboardPage(
                                 
                                 fluidRow(
                                   column(width = 6,
-                                         withSpinner(plotlyOutput("popdens", height = "650px"))),
+                                         withSpinner(plotlyOutput("popdens", height = "650px"))
+                                         ),
+                                  
                                   column(width = 6,
                                          withSpinner(plotlyOutput("hhdens2", height = "650px"))
                                   )
@@ -462,15 +693,44 @@ ui <- dashboardPage(
                                   )
                                 ),
                                 
-                                withSpinner(plotlyOutput("kituiLandSize", height = "790px")),
-                                fluidRow(box(width = 12,
-                                             column(width = 12)
-                                )
-                                ),
-                                withSpinner(plotlyOutput("kituiPopDensity", height = "790px")),
                                 tags$br(),
-                                withSpinner(plotlyOutput("KituiHHdensity", height = "790px")),
-                                tags$br()
+                                
+                                fluidRow(
+                                  column(width = 6,
+                                         withSpinner(plotlyOutput("kituiLandSize", height = "650px"))
+                                  ),
+                                  
+                                  column(width = 6,
+                                         withSpinner(plotlyOutput("kituiPopDensity", height = "650px"))
+                                  )
+                                ),
+                                
+                                tags$br(),
+                                tags$br(),
+                                
+                                fluidRow(
+                                  column(width = 3),
+                                  
+                                  column(width = 6,
+                                         withSpinner(plotlyOutput("KituiHHdensity", height = "650px"))
+                                  ),
+                                  
+                                  column(width = 3)
+                                ),
+                                
+                                tags$br(),
+                                tags$br(),
+                                
+                                
+                       #          withSpinner(plotlyOutput("kituiLandSize", height = "790px")),
+                       #          
+                       #          tags$br(),
+                       #          
+                       #          ),
+                       #          withSpinner(plotlyOutput("kituiPopDensity", height = "790px")),
+                       #          tags$br(),
+                       #          withSpinner(plotlyOutput("KituiHHdensity", height = "790px")),
+                       #          tags$br()
                        ),
                        
                        tabPanel("Kitui County Data", value = "KituiCounty",
@@ -487,7 +747,7 @@ ui <- dashboardPage(
                                          withSpinner(plotlyOutput("Kituipop", height = "650px"))
                                   ),
                                   column(width = 4,
-                                         withSpinner(plotlyOutput("Kituiland", height = "650px")),
+                                         withSpinner(plotlyOutput("Kituiland", height = "650px"))
                                   ),
                                   column(width = 4,
                                          withSpinner(plotlyOutput("Kituiavghld", height = "650px"))
@@ -512,14 +772,26 @@ ui <- dashboardPage(
                                   )
                                 )
                        )
-                ),     
-        )
+                ),
+                
+                tags$br(),
+                tags$br(),
+                
+        ),
+        
+        
+        # Third tabitem 
+        tabItem(tabName = "socio_econ",
+          tabBox(id = "t3", width = 12
+            
+          ) # end of tab box
+        ) # end of third tab item
       )
     )
   ),
   
   footer = dashboardFooter(
-    left = tags$a(href="https://www.knbs.or.ke/?s=2019+Kenya+Population+and+Housing+Census+", icon("chart-line"), "Go to KNBS: data source", target="_blank"),
-    right = tags$a(href="https://1drv.ms/w/s!Ag-4_r8pZseykUViy0dnOlI8i59i?e=h9szZ1", icon("chart-line"), "Go to Project: data source", target="_blank")
+    left = "", # tags$a(href="https://1drv.ms/w/s!Ag-4_r8pZseykUViy0dnOlI8i59i?e=h9szZ1", icon("chart-line"), "Go to Project: data source", target="_blank"),
+    right = tags$a(href="https://www.knbs.or.ke/?s=2019+Kenya+Population+and+Housing+Census+", icon("chart-line"), "Go to KNBS: data source", target="_blank")
   )
 )

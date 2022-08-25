@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r load data}
-my_data <- data.table(read_csv("data/Kitui_subcounties.csv"))
+my_data <- data.table(read_csv("data/Baringo_Sites.csv"))
 
 ```
 
@@ -21,12 +21,12 @@ my_data <- data.table(read_csv("data/Kitui_subcounties.csv"))
 
 
 ```{r Long format data frame}
-my_data.long <- my_data %>%
+my_data.long_Baringo <- my_data %>%
   pivot_longer(
-    cols = starts_with(c("Land","Population", "Population D", "No.of", "Household", "Average")),
+    cols = starts_with(c("Land","Population", "Population D", "No.of", "Household", "Targeted")),
     names_to = "Site_Data",
     names_prefix = NULL,
-    values_to = "Numbers",
+    values_to = "amount",
     values_drop_na = TRUE
   )
 View(my_data.long)
@@ -35,7 +35,36 @@ View(my_data.long)
 
 
 ```{r Write csv}
-fwrite(my_data.long, "data/Kitui_subcounties.csv")
+fwrite(my_data.long_Baringo, "data/Baringo.csv")
+```
+
+
+
+
+```{r load data}
+my_data <- data.table(read_csv("data/Kitui_Sites.csv"))
+
+```
+
+
+
+
+```{r Long format data frame}
+my_data.long_Kitui <- my_data %>%
+  pivot_longer(
+    cols = starts_with(c("Land","Population", "Population D", "No.of", "Household", "Targeted")),
+    names_to = "Site_Data",
+    names_prefix = NULL,
+    values_to = "amount",
+    values_drop_na = TRUE
+  )
+View(my_data.long_Kitui)
+
+```
+
+
+```{r Write csv}
+fwrite(my_data.long_Kitui, "data/Kitui_long.csv")
 ```
 
 

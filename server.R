@@ -88,7 +88,7 @@ function(input, output, session){
       scale_y_continuous(labels = comma) +
       geom_text(aes(label = amount),
                 position = position_dodge(width = 1),size = 3) +
-      facet_wrap(Wards~ ., 
+      facet_wrap(Wards~ .,
                  scales = "free_x") +
       labs (y = "Counts", title = paste(input$Sub_county,"Selected wards data")) +
       theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
@@ -116,17 +116,17 @@ function(input, output, session){
     
     Data_1 <- Data_1() %>%
       filter(Sublocation != "Total") %>% 
-      filter(Site_Data == "Land size (Sq.km)")
+      filter(Site_Data == "Land size (Sq.km) (KNBS, 2019)")
     Inst_Costs <- ggplot(Data_1, aes(Sublocation, amount, fill = Site_Data)) +
-      geom_col(position = "dodge") +
+      geom_col(position = "dodge", width = .3) +
       scale_fill_manual(values = c("#6E2C00", "blue", "green")) +
       theme_bw() +
       # geom_text(aes(label = amount),
       #           position = position_dodge(width = 1),
       #           size = 4, 
       #           color = "red") +
-      facet_wrap(~Wards, 
-                 scales = "free_x") +
+      # facet_wrap(~Wards, 
+      #            scales = "free_x") +
       labs (y = "Area in (Sq.km)", title = "Land size in Sq.km by sublocation") +
       theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
             axis.text.x = element_text(angle = 45, hjust = 1))
@@ -193,23 +193,21 @@ function(input, output, session){
     )
     
     Data_1 <- Data_1() %>%
-      filter(Sublocation != "Total")%>% 
-      filter(Site_Data == "Population Density (KNBS, 2019)")
-    Inst_Costs <- ggplot(Data_1, aes(Sublocation, amount, group = Site_Data)) +
-      geom_line(color = "blue", size = 1) +
-      geom_point(col = "#6E2C00", size = 2) +
+      filter(Sublocation != "Total") %>% 
+      filter(Site_Data == "Population density (KNBS, 2019)")
+    Inst_Costs <- ggplot(Data_1, aes(Sublocation, amount, fill = Site_Data)) +
+      geom_col(position = "dodge", width = .3) +
+      scale_fill_manual(values = c("blue", "blue", "green")) +
       theme_bw() +
-      geom_text(aes(label = amount),
-                position = position_dodge(width = 1), size = 4) +
-      facet_wrap(Wards~ ., 
-                 scales = "free_x",
-                 ncol = 2, 
-                 strip.position = "left") +
+      # geom_text(aes(label = amount),
+      #           position = position_dodge(width = 1),
+      #           size = 4, 
+      #           color = "red") +
+      # facet_wrap(~Wards, 
+      #            scales = "free_x") +
       labs (y = "Population Density", title = "Population Density by sublocation") +
       theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
-            axis.text.x = element_text(angle = 45, hjust = 1),
-            strip.background = element_rect(
-              color="black", fill="#F4FC00", size=1.5, linetype="solid"))
+            axis.text.x = element_text(angle = 45, hjust = 1))
     
     Inst_Costs %>%
       ggplotly %>%
@@ -217,9 +215,49 @@ function(input, output, session){
                            x = 0.1,
                            y = -0.2,
                            title = list(text ="")))%>% 
-      style(text = format(Data_1$amount, big.mark = ","), textposition = "right")
-    
+      style(text = format(Data_1$amount, big.mark = ","), textposition = "top")
   }) 
+  
+  
+  
+  
+  # output$popdens1 <- renderPlotly({
+  #   validate(
+  #     need(nrow(Data_1()) > 0, 'There is no data for the selected Sub-county since it is not included in the Restoring Trees and Livelihoods Pilot Project. 
+  #          To visualize project data, please select one of the following:
+  #          1. Baringo South, 
+  #          2. Mogotio, or 
+  #          3. Baringo North')
+  #   )
+  #   
+  #   Data_1 <- Data_1() %>%
+  #     filter(Sublocation != "Total")%>% 
+  #     filter(Site_Data == "Population density (KNBS, 2019)")
+  #   Inst_Costs <- ggplot(Data_1, aes(Sublocation, amount, group = Site_Data)) +
+  #     geom_line(color = "blue", size = 1) +
+  #     geom_point(col = "#6E2C00", size = 2) +
+  #     theme_bw() +
+  #     geom_text(aes(label = amount),
+  #               position = position_dodge(width = 1), size = 4) +
+  #     # facet_wrap(Wards~ ., 
+  #     #            scales = "free_x",
+  #     #            ncol = 2, 
+  #     #            strip.position = "left") +
+  #     labs (y = "Population Density", title = "Population Density by sublocation") +
+  #     theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
+  #           axis.text.x = element_text(angle = 45, hjust = 1),
+  #           strip.background = element_rect(
+  #             color="black", fill="#F4FC00", size=1.5, linetype="solid"))
+  #   
+  #   Inst_Costs %>%
+  #     ggplotly %>%
+  #     layout(legend = list(orientation = "h",
+  #                          x = 0.1,
+  #                          y = -0.2,
+  #                          title = list(text ="")))%>% 
+  #     style(text = format(Data_1$amount, big.mark = ","), textposition = "right")
+  #   
+  # }) 
   
   
   # Baringo County
@@ -233,24 +271,21 @@ function(input, output, session){
     )
     
     Data_1 <- Data_1() %>%
-      filter(Sublocation != "Total")%>% 
-      filter(Site_Data == "Households Density")
-    Inst_Costs <- ggplot(Data_1, aes(Sublocation, amount, group = Site_Data)) +
-      geom_line(color = "red", size = 1) +
-      geom_point(col = "#6E2C00", size = 2) +
-      scale_color_manual(values = c("green", "red", "steelblue")) +
+      filter(Sublocation != "Total") %>% 
+      filter(Site_Data == "Households density")
+    Inst_Costs <- ggplot(Data_1, aes(Sublocation, amount, fill = Site_Data)) +
+      geom_col(position = "dodge", width = .3) +
+      scale_fill_manual(values = c("red", "blue", "green")) +
       theme_bw() +
-      geom_text(aes(label = amount),
-                position = position_dodge(width = 1), size = 4) +
-      facet_wrap(Wards~ ., 
-                 scales = "free_x",
-                 ncol = 2, 
-                 strip.position = "left") +
+      # geom_text(aes(label = amount),
+      #           position = position_dodge(width = 1),
+      #           size = 4, 
+      #           color = "red") +
+      # facet_wrap(~Wards, 
+      #            scales = "free_x") +
       labs (y = "Households density", title = "Households density by sublocation") +
       theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
-            axis.text.x = element_text(angle = 45, hjust = 1),
-            strip.background = element_rect(
-              color="black", fill="#F4FC00", size=1.5, linetype="solid"))
+            axis.text.x = element_text(angle = 45, hjust = 1))
     
     Inst_Costs %>%
       ggplotly %>%
@@ -258,9 +293,49 @@ function(input, output, session){
                            x = 0.1,
                            y = -0.2,
                            title = list(text ="")))%>% 
-      style(text = format(Data_1$amount, big.mark = ","), textposition = "right")
-    
+      style(text = format(Data_1$amount, big.mark = ","), textposition = "top")
   }) 
+  
+  
+  
+  # output$hhdens1 <- renderPlotly({
+  #   validate(
+  #     need(nrow(Data_1()) > 0, 'There is no data for the selected Sub-county since it is not included in the Restoring Trees and Livelihoods Pilot Project. 
+  #          To visualize project data, please select one of the following:
+  #          1. Baringo South, 
+  #          2. Mogotio, or 
+  #          3. Baringo North')
+  #   )
+  #   
+  #   Data_1 <- Data_1() %>%
+  #     filter(Sublocation != "Total")%>% 
+  #     filter(Site_Data == "Households density")
+  #   Inst_Costs <- ggplot(Data_1, aes(Sublocation, amount, group = Site_Data)) +
+  #     geom_line(color = "red", size = 1) +
+  #     geom_point(col = "#6E2C00", size = 2) +
+  #     scale_color_manual(values = c("green", "red", "steelblue")) +
+  #     theme_bw() +
+  #     geom_text(aes(label = amount),
+  #               position = position_dodge(width = 1), size = 4) +
+  #     # facet_wrap(Wards~ ., 
+  #     #            scales = "free_x",
+  #     #            ncol = 2, 
+  #     #            strip.position = "left") +
+  #     labs (y = "Households density", title = "Households density by sublocation") +
+  #     theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
+  #           axis.text.x = element_text(angle = 45, hjust = 1),
+  #           strip.background = element_rect(
+  #             color="black", fill="#F4FC00", size=1.5, linetype="solid"))
+  #   
+  #   Inst_Costs %>%
+  #     ggplotly %>%
+  #     layout(legend = list(orientation = "h",
+  #                          x = 0.1,
+  #                          y = -0.2,
+  #                          title = list(text ="")))%>% 
+  #     style(text = format(Data_1$amount, big.mark = ","), textposition = "right")
+  #   
+  # }) 
   
   
   # Baringo County
@@ -397,7 +472,7 @@ function(input, output, session){
     
     valueBox(
       paste0(format(sum(Data_3$amount), big.mark = ",")),
-      paste0("Total number of households in", input$KituiSubcounty, " selected wards"),
+      paste0("Total number of households in ", input$KituiSubcounty, " selected wards"),
       color = "red", width = 4, icon = icon("home")
     )
     
@@ -405,19 +480,30 @@ function(input, output, session){
   
   
   # Kitui County
+  
   output$kituiTargetedHH <- renderValueBox({
     Data_3 <- Data_3() %>% 
-      filter(Site_Data == "Land size (Sq.km)") %>% 
+      filter(Site_Data == "Targeted Households") %>% 
       filter(Location == "Total")
-    
-    valueBox(
-      paste0(format(sum(Data_3$amount), big.mark = ",")),
-      paste0("Total land size in Sq.km in ", input$KituiSubcounty, " selected wards"),
-      color = "aqua", width = 4, icon = icon("store")
-    )
-    
+    valueBox(paste0(format(sum(Data_3$amount),big.mark=',')), 
+             paste0("Total targeted households in ", input$KituiSubcounty, " selected wards"),
+             color = "aqua", width = 4, icon = icon("user"))
   })
   
+  
+  # output$kituiTargetedHH <- renderValueBox({
+  #   Data_3 <- Data_3() %>% 
+  #     filter(Site_Data == "Land size (Sq.km)") %>% 
+  #     filter(Location == "Total")
+  #   
+  #   valueBox(
+  #     paste0(format(sum(Data_3$amount), big.mark = ",")),
+  #     paste0("Total land size in Sq.km in ", input$KituiSubcounty, " selected wards"),
+  #     color = "aqua", width = 4, icon = icon("store")
+  #   )
+  #   
+  # })
+  # 
   
   # Kitui County
   output$Kituibarchart <- renderPlotly({
@@ -495,6 +581,7 @@ function(input, output, session){
   
   
   # Kitui county
+  
   output$kituiLandSize <- renderPlotly({
     validate(
       need(nrow(Data_3()) > 0, 'There is no data for the selected Sub-county since it is not included in the Restoring Trees and Livelihoods Pilot Project. 
@@ -505,13 +592,17 @@ function(input, output, session){
     
     Data_3 <- Data_3() %>%
       filter(Sublocation != "Total") %>% 
-      filter(Site_Data == "Land size (Sq.km)")
+      filter(Site_Data == "Land size (Sq.km) (KNBS, 2019)")
     Inst_Costs <- ggplot(Data_3, aes(Sublocation, amount, fill = Site_Data)) +
-      geom_col(position = "dodge") +
+      geom_col(position = "dodge", width = .3) +
       scale_fill_manual(values = c("#6E2C00", "blue", "green")) +
       theme_bw() +
-      facet_wrap(~Wards, 
-                 scales = "free_x") +
+      # geom_text(aes(label = amount),
+      #           position = position_dodge(width = 1),
+      #           size = 4, 
+      #           color = "red") +
+      # facet_wrap(~Wards, 
+      #            scales = "free_x") +
       labs (y = "Area in (Sq.km)", title = "Land size in Sq.km by sublocation") +
       theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
             axis.text.x = element_text(angle = 45, hjust = 1))
@@ -526,6 +617,38 @@ function(input, output, session){
   }) 
   
   
+  # 
+  # output$kituiLandSize <- renderPlotly({
+  #   validate(
+  #     need(nrow(Data_3()) > 0, 'There is no data for the selected Sub-county since it is not included in the Restoring Trees and Livelihoods Pilot Project. 
+  #          To visualize project data, please select one of the following:
+  #          1. Kitui Rural, or 
+  #          2. Kitui West')
+  #   )
+  #   
+  #   Data_3 <- Data_3() %>%
+  #     filter(Sublocation != "Total") %>% 
+  #     filter(Site_Data == "Land size (Sq.km)")
+  #   Inst_Costs <- ggplot(Data_3, aes(Sublocation, amount, fill = Site_Data)) +
+  #     geom_col(position = "dodge") +
+  #     scale_fill_manual(values = c("#6E2C00", "blue", "green")) +
+  #     theme_bw() +
+  #     facet_wrap(~Wards, 
+  #                scales = "free_x") +
+  #     labs (y = "Area in (Sq.km)", title = "Land size in Sq.km by sublocation") +
+  #     theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
+  #           axis.text.x = element_text(angle = 45, hjust = 1))
+  #   
+  #   Inst_Costs %>%
+  #     ggplotly %>%
+  #     layout(legend = list(orientation = "h",
+  #                          x = 0.1,
+  #                          y = -0.2,
+  #                          title = list(text ="")))%>% 
+  #     style(text = format(Data_3$amount, big.mark = ","), textposition = "top")
+  # }) 
+  
+  
   # Kitui County
   output$kituiPopDensity <- renderPlotly({
     validate(
@@ -536,23 +659,21 @@ function(input, output, session){
     )
     
     Data_3 <- Data_3() %>%
-      filter(Sublocation != "Total")%>% 
+      filter(Sublocation != "Total") %>% 
       filter(Site_Data == "Population Density (KNBS, 2019)")
-    Inst_Costs <- ggplot(Data_3, aes(Sublocation, amount, group = Site_Data)) +
-      geom_line(color = "blue", size = 1, show.legend = F) +
-      geom_point(col = "#6E2C00", size = 2) +
+    Inst_Costs <- ggplot(Data_3, aes(Sublocation, amount, fill = Site_Data)) +
+      geom_col(position = "dodge", width = .3) +
+      scale_fill_manual(values = c("blue", "blue", "green")) +
       theme_bw() +
-      geom_text(aes(label = amount),
-                position = position_dodge(width = 1), size = 4) +
-      facet_wrap(Wards~ ., 
-                 scales = "free_x",
-                 ncol = 2, 
-                 strip.position = "left") +
+      # geom_text(aes(label = amount),
+      #           position = position_dodge(width = 1),
+      #           size = 4, 
+      #           color = "red") +
+      # facet_wrap(~Wards, 
+      #            scales = "free_x") +
       labs (y = "Population Density", title = "Population Density by sublocation") +
       theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
-            axis.text.x = element_text(angle = 45, hjust = 1),
-            strip.background = element_rect(
-              color="black", fill="#F4FC00", size=1.5, linetype="solid"))
+            axis.text.x = element_text(angle = 45, hjust = 1))
     
     Inst_Costs %>%
       ggplotly %>%
@@ -561,37 +682,76 @@ function(input, output, session){
                            y = -0.2,
                            title = list(text ="")))%>% 
       style(text = format(Data_3$amount, big.mark = ","), textposition = "right")
-    
   }) 
+  
+  
+  
+  
+  
+  
+  # output$kituiPopDensity <- renderPlotly({
+  #   validate(
+  #     need(nrow(Data_3()) > 0, 'There is no data for the selected Sub-county since it is not included in the Restoring Trees and Livelihoods Pilot Project. 
+  #          To visualize project data, please select one of the following:
+  #          1. Kitui Rural, or 
+  #          2. Kitui West')
+  #   )
+  #   
+  #   Data_3 <- Data_3() %>%
+  #     filter(Sublocation != "Total")%>% 
+  #     filter(Site_Data == "Population Density (KNBS, 2019)")
+  #   Inst_Costs <- ggplot(Data_3, aes(Sublocation, amount, group = Site_Data)) +
+  #     geom_line(color = "blue", size = 1, show.legend = F) +
+  #     geom_point(col = "#6E2C00", size = 2) +
+  #     theme_bw() +
+  #     geom_text(aes(label = amount),
+  #               position = position_dodge(width = 1), size = 4) +
+  #     facet_wrap(Wards~ ., 
+  #                scales = "free_x",
+  #                ncol = 2, 
+  #                strip.position = "left") +
+  #     labs (y = "Population Density", title = "Population Density by sublocation") +
+  #     theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
+  #           axis.text.x = element_text(angle = 45, hjust = 1),
+  #           strip.background = element_rect(
+  #             color="black", fill="#F4FC00", size=1.5, linetype="solid"))
+  #   
+  #   Inst_Costs %>%
+  #     ggplotly %>%
+  #     layout(legend = list(orientation = "h",
+  #                          x = 0.1,
+  #                          y = -0.2,
+  #                          title = list(text ="")))%>% 
+  #     style(text = format(Data_3$amount, big.mark = ","), textposition = "right")
+  #   
+  # }) 
   
   
   # Kitui County
   output$KituiHHdensity <- renderPlotly({
-    validate(
-      need(nrow(Data_3()) > 0, 'There is no data for the selected Sub-county since it is not included in the Restoring Trees and Livelihoods Pilot Project. 
-           To visualize project data, please select one of the following:
-           1. Kitui Rural, or 
-           2. Kitui West')
-    )
+    # validate(
+    #   need(nrow(Data_3()) > 0, 'There is no data for the selected Sub-county since it is not included in the Restoring Trees and Livelihoods Pilot Project. 
+    #        To visualize project data, please select one of the following:
+    #        1. Kitui Rural, or 
+    #        2. Kitui West')
+    # )
     
     Data_3 <- Data_3() %>%
-      filter(Sublocation != "Total")%>% 
-      filter(Site_Data == "Households Density")
-    Inst_Costs <- ggplot(Data_3, aes(Sublocation, amount, fill = Site_Data, group = Site_Data)) +
-      geom_line(color = "red", size = 1, show.legend = F) +
-      geom_point(col = "#6E2C00", size = 2) +
+      filter(Sublocation != "Total") %>% 
+      filter(Site_Data == "Households density")
+    Inst_Costs <- ggplot(Data_3, aes(Sublocation, amount, fill = Site_Data)) +
+      geom_col(position = "dodge", width = .3) +
+      scale_fill_manual(values = c("red", "blue", "green")) +
       theme_bw() +
-      geom_text(aes(label = amount),
-                position = position_dodge(width = 1), size = 4) +
-      facet_wrap(Wards~ ., 
-                 scales = "free_x",
-                 ncol = 2, 
-                 strip.position = "left") +
+      # geom_text(aes(label = amount),
+      #           position = position_dodge(width = 1),
+      #           size = 4, 
+      #           color = "red") +
+      # facet_wrap(~Wards, 
+      #            scales = "free_x") +
       labs (y = "Households density", title = "Households density by sublocation") +
       theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
-            axis.text.x = element_text(angle = 45, hjust = 1),
-            strip.background = element_rect(
-              color="black", fill="#F4FC00", size=1.5, linetype="solid"))
+            axis.text.x = element_text(angle = 45, hjust = 1))
     
     Inst_Costs %>%
       ggplotly %>%
@@ -599,9 +759,48 @@ function(input, output, session){
                            x = 0.1,
                            y = -0.2,
                            title = list(text ="")))%>% 
-      style(text = format(Data_3$amount, big.mark = ","), textposition = "right")
-    
+      style(text = format(Data_3$amount, big.mark = ","), textposition = "top")
   }) 
+  
+  
+  
+  
+  # output$KituiHHdensity <- renderPlotly({
+  #   validate(
+  #     need(nrow(Data_3()) > 0, 'There is no data for the selected Sub-county since it is not included in the Restoring Trees and Livelihoods Pilot Project. 
+  #          To visualize project data, please select one of the following:
+  #          1. Kitui Rural, or 
+  #          2. Kitui West')
+  #   )
+  #   
+  #   Data_3 <- Data_3() %>%
+  #     filter(Sublocation != "Total")%>% 
+  #     filter(Site_Data == "Households Density")
+  #   Inst_Costs <- ggplot(Data_3, aes(Sublocation, amount, fill = Site_Data, group = Site_Data)) +
+  #     geom_line(color = "red", size = 1, show.legend = F) +
+  #     geom_point(col = "#6E2C00", size = 2) +
+  #     theme_bw() +
+  #     geom_text(aes(label = amount),
+  #               position = position_dodge(width = 1), size = 4) +
+  #     facet_wrap(Wards~ ., 
+  #                scales = "free_x",
+  #                ncol = 2, 
+  #                strip.position = "left") +
+  #     labs (y = "Households density", title = "Households density by sublocation") +
+  #     theme(plot.title = element_text(hjust = 0.5, face = "bold"), 
+  #           axis.text.x = element_text(angle = 45, hjust = 1),
+  #           strip.background = element_rect(
+  #             color="black", fill="#F4FC00", size=1.5, linetype="solid"))
+  #   
+  #   Inst_Costs %>%
+  #     ggplotly %>%
+  #     layout(legend = list(orientation = "h",
+  #                          x = 0.1,
+  #                          y = -0.2,
+  #                          title = list(text ="")))%>% 
+  #     style(text = format(Data_3$amount, big.mark = ","), textposition = "right")
+  #   
+  # }) 
   
   
   # Kitui County
